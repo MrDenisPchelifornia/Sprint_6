@@ -9,22 +9,18 @@ import data
 
 class FillingForm:
 
-    next_button = (By.CLASS_NAME, "Button_Button__ra12g.Button_Middle__1CSJM")
-    when_delivery_field = (By.XPATH, "/html/body/div/div/div[2]/div[2]/div[1]/div[1]/div/input")
-    rental_period_field = (By.CLASS_NAME, 'Dropdown-placeholder')
-    order_button = (By.XPATH, "/html/body/div/div/div[2]/div[3]/button[2]")
-    yes_button = (By.XPATH, "/html/body/div/div/div[2]/div[5]/div[2]/button[2]")
-    first_name_field_locator = (By.XPATH, "//div[2]/div[2]/div[1]/input")
-    # first_name_field_locator = (By.CLASS_NAME "Input_Input__1iN_Z.Input_Error__1Tx5.Input_Responsible__1jDKN")
-    # last_name_field = (By.XPATH, "//div[2]/div[2]/div[2]/input")
+    first_name_field_locator = (By.CSS_SELECTOR, 'input[placeholder="* Имя"]')
     last_name_field = (By.CSS_SELECTOR, 'input[placeholder="* Фамилия"]')
-    # address_field = (By.XPATH, "//div[2]/div[2]/div[3]/input")
     address_field = (By.CSS_SELECTOR, 'input[placeholder="* Адрес: куда привезти заказ"]')
-    # phone_number_field = (By.XPATH, "//div[2]/div[2]/div[5]/input")
     phone_number_field = (By.CSS_SELECTOR, 'input[placeholder="* Телефон: на него позвонит курьер"]')
     metro_station_field = (By.CLASS_NAME, "select-search__input")
     # metro_station_final_choice =
     # rental_period_final_choice =
+    next_button = (By.CLASS_NAME, "Button_Button__ra12g.Button_Middle__1CSJM")
+    when_delivery_field = (By.CSS_SELECTOR, 'input[placeholder="* Когда привезти самокат"]')
+    rental_period_field = (By.CLASS_NAME, 'Dropdown-placeholder')
+    order_button = (By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Заказать']")
+    yes_button = (By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']")
     text_on_success_banner = (By.CLASS_NAME, 'Order_ModalHeader__3FDaJ')
 
     def __init__(self, driver):
