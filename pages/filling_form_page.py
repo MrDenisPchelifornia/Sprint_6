@@ -6,55 +6,55 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 import data
+from locators.filling_form_locators import FillingFormLocators
+from pages.base import Base
+from pages.scooter_main_page import ScooterMainPage
 
-class FillingForm:
-
-    first_name_field_locator = (By.CSS_SELECTOR, 'input[placeholder="* Имя"]')
-    last_name_field = (By.CSS_SELECTOR, 'input[placeholder="* Фамилия"]')
-    address_field = (By.CSS_SELECTOR, 'input[placeholder="* Адрес: куда привезти заказ"]')
-    phone_number_field = (By.CSS_SELECTOR, 'input[placeholder="* Телефон: на него позвонит курьер"]')
-    metro_station_field = (By.CLASS_NAME, "select-search__input")
-    # metro_station_final_choice =
-    # rental_period_final_choice =
-    next_button = (By.CLASS_NAME, "Button_Button__ra12g.Button_Middle__1CSJM")
-    when_delivery_field = (By.CSS_SELECTOR, 'input[placeholder="* Когда привезти самокат"]')
-    rental_period_field = (By.CLASS_NAME, 'Dropdown-placeholder')
-    order_button = (By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Заказать']")
-    yes_button = (By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']")
-    text_on_success_banner = (By.CLASS_NAME, 'Order_ModalHeader__3FDaJ')
+class FillingFormPage(Base):
 
     def __init__(self, driver):
-        self.driver = driver
-        self.first_name_field = FillingForm.first_name_field_locator
-        self.last_name_field = FillingForm.last_name_field
-        self.address_field = FillingForm.address_field
-        self.phone_number_field = FillingForm.phone_number_field
-        self.metro_station_field = FillingForm.metro_station_field
+        super().__init__(driver)
+        self.first_name_field = FillingFormLocators.first_name_field_locator
+        self.last_name_field = FillingFormLocators.last_name_field
+        self.address_field = FillingFormLocators.address_field
+        self.phone_number_field = FillingFormLocators.phone_number_field
+        self.metro_station_field = FillingFormLocators.metro_station_field
+        self.scooter_main_page = ScooterMainPage(driver)
 
     def fill_first_name(self, first_name):
-        self.driver.find_element(*self.first_name_field).send_keys(first_name)
+        self.send_keys(self.first_name_field, first_name)
+
     def fill_last_name(self, last_name):
-        self.driver.find_element(*self.last_name_field).send_keys(last_name)
+        self.send_keys(self.last_name_field, last_name)
+
     def fill_address(self, address):
-        self.driver.find_element(*self.address_field).send_keys(address)
+        self.send_keys(self.address_field, address)
+
     def fill_phone_number(self, phone_number):
-        self.driver.find_element(*self.phone_number_field).send_keys(phone_number)
+        self.send_keys(self.phone_number_field, phone_number)
+
     def fill_metro_station(self, metro_station):
-        self.driver.find_element(*self.metro_station_field).send_keys(metro_station)
-        # не успел подумать как сунуть в локатор отдельн
-        self.driver.find_element(By.XPATH, f"//*[/html/body/div/div/div[2]/div[2]/div[4]/div/div/input]//div[contains(text(), '{metro_station}')]").click()
+        self.send_keys(self.metro_station_field, metro_station)
+        metro_station_list_locator = FillingFormLocators.metro_station_list[0], \
+        FillingFormLocators.metro_station_list[1].format(metro_station)
+        metro_station_element = self.find_element(metro_station_list_locator)
+        metro_station_element.click()
+
     def click_next_button(self):
-        self.driver.find_element(*self.next_button).click()
+        self.click(FillingFormLocators.next_button)
+
     def fill_when_delivery_field(self, delivery_date):
-        self.driver.find_element(*self.when_delivery_field).send_keys(delivery_date)
+        self.send_keys(FillingFormLocators.when_delivery_field, delivery_date)
+
     def fill_rental_period_field(self, rental_period):
-        self.driver.find_element(*self.rental_period_field).click()
-        # не успел подумать как сунуть в локатор отдельно
-        self.driver.find_element(By.XPATH, f"//*[/html/body/div/div/div[2]/div[2]/div[2]/div/div[1]]//div[contains(text(), '{rental_period}')]").click()
+        self.scooter_main_page.skip_cookie_banner_batton()
+        self.click(FillingFormLocators.rental_period_field)
+        rental_period_list_locator = FillingFormLocators.rental_period_list[0], FillingFormLocators.rental_period_list[1].format(rental_period)
+        rental_period_element = self.find_element(rental_period_list_locator)
+        rental_period_element.click()
+
     def click_order_button(self):
-        self.driver.find_element(*self.order_button).click()
+        self.click(FillingFormLocators.order_button)
+
     def click_yes_button(self):
-        self.driver.find_element(*self.yes_button).click()
-
-    # def step_filling_first_screen(self, data)
-
+        self.click(FillingFormLocators.yes_button)
