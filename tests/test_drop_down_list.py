@@ -1,3 +1,4 @@
+import allure
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 import pytest
@@ -15,6 +16,7 @@ class TestDropDownList:
         cls.driver = webdriver.Firefox()
 
     @pytest.mark.parametrize(*data.data_for_drop_down_list)
+    @allure.title('Проверка списка вопросов с выпадающими по клику ответами')
     def test_drop_down_list(self, toggle_locator, text_locator, expected_text):
         self.driver.get('https://qa-scooter.praktikum-services.ru/')
         main_screen = ScooterMainPage(self.driver)

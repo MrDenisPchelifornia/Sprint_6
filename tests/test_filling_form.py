@@ -8,6 +8,7 @@ from selenium.common.exceptions import TimeoutException
 from pages.filling_form_page import FillingFormPage
 import data
 from locators.filling_form_locators import FillingFormLocators
+import allure
 
 class TestFillingForm:
     driver = None
@@ -16,8 +17,8 @@ class TestFillingForm:
     def setup_class(cls):
         cls.driver = webdriver.Firefox()
 
+    @allure.title('Заполнение формы заказа')
     @pytest.mark.parametrize(*data.data_for_filling)
-    # в заполнеении формы как буд то можно выделить 1-2 шага
     def test_filling_form_data(self, data):
         self.driver.get("https://qa-scooter.praktikum-services.ru/order")
         filling_form = FillingFormPage(self.driver)
@@ -26,7 +27,6 @@ class TestFillingForm:
         filling_form.fill_address(data["address"])
         filling_form.fill_phone_number(data["phone_number"])
         filling_form.fill_metro_station(data["metro_station"])
-        # filling_form.click_on_right_station()
         filling_form.click_next_button()
         filling_form.fill_when_delivery_field(data["delivery_date"])
         actions = ActionChains(self.driver)

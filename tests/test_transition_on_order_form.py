@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from pages.scooter_main_page import ScooterMainPage
 from locators.scooter_main_locators import ScooterMainLocators
+import allure
 
 class TestTransitionOnOrderForm:
 
@@ -16,12 +17,14 @@ class TestTransitionOnOrderForm:
     def setup_class(cls):
         cls.driver = webdriver.Firefox()
 
+    @allure.title('Переход к форме заказа через верхнюю кнопку')
     def test_transition_through_top_button(self):
         self.driver.get('https://qa-scooter.praktikum-services.ru/')
         main_screen = ScooterMainPage(self.driver)
         main_screen.click_on_order_button_top()
         assert self.driver.find_element(*ScooterMainLocators.for_who_scotter_hader_on_main).text == 'Для кого самокат'
 
+    @allure.title('Переход к форме заказа через нижнюю кнопку')
     def test_transition_through_bottom_button(self):
         self.driver.get('https://qa-scooter.praktikum-services.ru/')
         main_screen = ScooterMainPage(self.driver)

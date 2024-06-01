@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from pages.scooter_main_page import ScooterMainPage
 from locators.scooter_main_locators import ScooterMainLocators
+import allure
 
 class TestTransferThroughLogoPart:
 
@@ -16,6 +17,7 @@ class TestTransferThroughLogoPart:
     def setup_class(cls):
         cls.driver = webdriver.Firefox()
 
+    @allure.title('Переход на главную через лого "Самокат"')
     def test_transfer_through_logo_scooter_part(self):
         self.driver.get("https://qa-scooter.praktikum-services.ru/")
         transfer = ScooterMainPage(self.driver)
@@ -23,6 +25,7 @@ class TestTransferThroughLogoPart:
         transfer.click_on_scooter_logo()
         assert ('Самокат\n'+'на пару дней\n'+'Привезём его прямо к вашей двери,\n'+'а когда накатаетесь — заберём') in self.driver.find_element(*ScooterMainLocators.home_page_header).text
 
+    @allure.title('Переход на страницу "Дзен" через лого "Яндекс"')
     def test_transfer_through_logo_yandex_part(self):
         current_window = self.driver.current_window_handle
         self.driver.get("https://qa-scooter.praktikum-services.ru/")
