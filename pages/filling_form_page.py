@@ -34,9 +34,9 @@ class FillingFormPage(Base):
         self.send_keys(self.phone_number_field, phone_number)
 
     def fill_metro_station(self, metro_station):
-        self.send_keys(self.metro_station_field, metro_station)
-        metro_station_list_locator = FillingFormLocators.metro_station_list[0], \
-        FillingFormLocators.metro_station_list[1].format(metro_station)
+        self.send_keys(FillingFormLocators.metro_station_field, metro_station)
+        metro_station_list_locator = FillingFormLocators.metro_station_list[0], FillingFormLocators.metro_station_list[
+            1].format(metro_station)
         metro_station_element = self.find_element(metro_station_list_locator)
         metro_station_element.click()
 

@@ -20,8 +20,10 @@ class FillingFormLocators():
     order_button = (By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Заказать']")
     yes_button = (By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']")
     text_on_success_banner = (By.CLASS_NAME, 'Order_ModalHeader__3FDaJ')
-    metro_station_list = (By.XPATH, "//*[/html/body/div/div/div[2]/div[2]/div[4]/div/div/input]//div[contains(text(), '{}')]")
-    rental_period_list = (By.XPATH, "//*[/html/body/div/div/div[2]/div[2]/div[2]/div/div[1]]//div[contains(text(), '{}')]")
+    metro_station_list = (By.XPATH, "//*[//div/input]//div[contains(text(), '{}')]")
+    rental_period_list = (By.XPATH, "//div[@class='Dropdown-menu']//div[contains(text(), '{}')]")
+
+
 
 
 
