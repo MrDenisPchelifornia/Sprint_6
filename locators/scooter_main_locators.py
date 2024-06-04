@@ -1,4 +1,3 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 class ScooterMainLocators:
@@ -23,9 +22,6 @@ class ScooterMainLocators:
     what_about_charging_toggle_open = (By.XPATH, "//p[contains(text(), 'Самокат приезжает к вам с полной зарядкой.')]")
     may_i_cancel_order_toggle_open = (By.XPATH, "//p[contains(text(), 'Да, пока самокат не привезли.')]")
     suburban_problems_toggle_open = (By.XPATH, "//p[contains(text(), 'Да, обязательно.')]")
-    yandex_logo = (By.CLASS_NAME, "Header_LogoYandex__3TSOI")
-    scooter_logo = (By.CLASS_NAME, "Header_LogoScooter__3lsAR")
-    for_who_scotter_hader_on_main = (By.CLASS_NAME, 'Order_Header__BZXOb')
 
     yandex_logo = (By.CLASS_NAME, "Header_LogoYandex__3TSOI")
     scooter_logo = (By.CLASS_NAME, "Header_LogoScooter__3lsAR")

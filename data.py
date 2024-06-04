@@ -32,3 +32,6 @@ data_for_drop_down_list = ("toggle_locator, text_locator, expected_text", [
         (ScooterMainLocators.may_i_cancel_order_toggle, ScooterMainLocators.may_i_cancel_order_toggle_open, Constants.EXPECTED_TEXTS["may_i_cancel_order_toggle"]),
         (ScooterMainLocators.suburban_problems_toggle, ScooterMainLocators.suburban_problems_toggle_open, Constants.EXPECTED_TEXTS["suburban_problems_toggle"])
     ])
+
+URL = 'https://qa-scooter.praktikum-services.ru/'
+URL_DZEN = 'https://dzen.ru/?yredirect=true'
