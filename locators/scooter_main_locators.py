@@ -1,0 +1,28 @@
+from selenium.webdriver.common.by import By
+
+class ScooterMainLocators:
+    order_button_top = (By.CLASS_NAME, 'Button_Button__ra12g')
+    order_button_bottom = (By.CSS_SELECTOR, '.Button_Button__ra12g.Button_Middle__1CSJM')
+    last_element_of_question_list = (By.ID, 'accordion__heading-7')
+    how_much_toggle = (By.ID, 'accordion__heading-0')
+    want_a_lot_toggle = (By.ID, 'accordion__heading-1')
+    how_to_count_toggle = (By.ID, 'accordion__heading-2')
+    right_here_right_now_toggle = (By.ID, 'accordion__heading-3')
+    extend_or_finish_early_toggle = (By.ID, 'accordion__heading-4')
+    what_about_charging_toggle = (By.ID, 'accordion__heading-5')
+    may_i_cancel_order_toggle = (By.ID, 'accordion__heading-6')
+    suburban_problems_toggle = (By.ID, 'accordion__heading-7')
+    cookie_banner = (By.CLASS_NAME, 'App_CookieConsent__1yUIN')
+    cookie_banner_batton = (By.ID, 'rcc-confirm-button')
+    how_much_toggle_expect_open = (By.XPATH, "//div[@data-accordion-component='AccordionItemPanel']//p")
+    want_a_lot_toggle_open = (By.XPATH, "//p[contains(text(), 'Пока что у нас так: один заказ — один самокат.')]")
+    how_to_count_toggle_open = (By.XPATH, "//p[contains(text(), 'Допустим, вы оформляете заказ на 8 мая.')]")
+    right_here_right_now_toggle_open = (By.XPATH, "//p[contains(text(), 'Только начиная с завтрашнего дня.')]")
+    extend_or_finish_early_toggle_open = (By.XPATH, "//p[contains(text(), 'Пока что нет!')]")
+    what_about_charging_toggle_open = (By.XPATH, "//p[contains(text(), 'Самокат приезжает к вам с полной зарядкой.')]")
+    may_i_cancel_order_toggle_open = (By.XPATH, "//p[contains(text(), 'Да, пока самокат не привезли.')]")
+    suburban_problems_toggle_open = (By.XPATH, "//p[contains(text(), 'Да, обязательно.')]")
+
+    yandex_logo = (By.CLASS_NAME, "Header_LogoYandex__3TSOI")
+    scooter_logo = (By.CLASS_NAME, "Header_LogoScooter__3lsAR")
+    home_page_header = (By.CLASS_NAME, 'Home_Header__iJKdX')
